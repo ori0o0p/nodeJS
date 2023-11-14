@@ -1,4 +1,4 @@
-const express = require('express')
+import express from "express";
 const app = express()
 
 app.listen(3000, () => {
@@ -6,25 +6,8 @@ app.listen(3000, () => {
 })
 app.use(express.json())
 
-const mongoose = require('mongoose')
-
-mongoose.connect('')
-        .then(() => console.log('db 연결 성공'))
-        .catch((error) => console.log(error))
-
-const userSchema = new mongoose.Schema({
-    name: String,
-    age: Number
-})
-
-const User = mongoose.model('User', userSchema)
-
-app.get('/hello', (res) => {
+app.get('/hello', (req, res) => {
     res.send('hello node!')
-})
-
-app.get('/hello', (res) => {
-    res.send(object)
 })
 
 app.post('/add', (req, res) => {
@@ -34,4 +17,5 @@ app.post('/add', (req, res) => {
     }
     res.status(201).send(obj)
 })
+
 
