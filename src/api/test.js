@@ -1,17 +1,15 @@
 const express = require('express')
 const app = express()
 
-const mongoose = require('mongoose')
-
-mongoose.connect('')
-
-const db = mongoose.connection
-
-app.use(express.json())
-
 app.listen(3000, () => {
     console.log('실행 중 포트 : 3000')
 })
+
+const mongoose = require('mongoose')
+mongoose.connect('')
+// const db = mongoose.connection
+
+app.use(express.json())
 
 let object = {
     name : 'string',
