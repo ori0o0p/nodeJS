@@ -1,6 +1,12 @@
 const express = require('express')
 const app = express()
 
+const mongoose = require('mongoose')
+
+mongoose.connect('')
+
+const db = mongoose.connection
+
 app.use(express.json())
 
 app.listen(3000, () => {
@@ -8,8 +14,8 @@ app.listen(3000, () => {
 })
 
 let object = {
-    name : '김승원',
-    age : 17
+    name : 'string',
+    age : 'int'
 };
 
 app.get('/hello', (res) => {
