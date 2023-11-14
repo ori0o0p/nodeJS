@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 
-app.listen(3000, () => console.log('실행 중'))
+app.listen(3000, () => {
+    console.log('실행 중 포트 : 3000')
+})
 
-var object = {
+let object = {
     name : '김승원',
     age : 17
 };
@@ -15,3 +17,13 @@ app.get('/hello', (res) => {
 app.get('/hello', (res) => {
     res.send(object)
 })
+
+app.get('/add', (req, res) => {
+    let obj = {
+        title : req.body.title,
+        content : req.body.content
+    }
+    res.send(obj)
+       .status(200)
+})
+
