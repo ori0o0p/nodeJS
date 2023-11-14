@@ -8,8 +8,10 @@ var object = {
     age : 17
 };
 
-app.get('/hello', (req, res) => {
-    res.send(object)
+app.get('/hello', (res) => {
+    res.send('hello node!')
 })
 
-
+app.get('/hello', (res) => {
+    res.send(object)
+})
