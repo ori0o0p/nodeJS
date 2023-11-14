@@ -11,10 +11,12 @@ mongoose.connect('')
 
 app.use(express.json())
 
-let object = {
-    name : 'string',
-    age : 'int'
-};
+const userSchema = new mongoose.Schema({
+    name: String,
+    age: Number
+})
+
+const User = mongoose.model('User', userSchema)
 
 app.get('/hello', (res) => {
     res.send('hello node!')
