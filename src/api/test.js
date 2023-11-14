@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 app.listen(3000, () => {
     console.log('실행 중 포트 : 3000')
 })
@@ -18,12 +20,11 @@ app.get('/hello', (res) => {
     res.send(object)
 })
 
-app.get('/add', (req, res) => {
-    let obj = {
+app.post('/add', (req, res) => {
+    const obj = {
         title : req.body.title,
         content : req.body.content
     }
-    res.send(obj)
-       .status(200)
+    res.status(201).send(obj)
 })
 
