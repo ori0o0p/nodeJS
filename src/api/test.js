@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost:27017/nodejs')
 const userSchema = new mongoose.Schema({
     name: String,
     age: Number
-}, {collection: 'user'})
+}, {collection: 'user', versionKey: false })
 
 const User = new mongoose.model('User', userSchema)
 
