@@ -17,5 +17,3 @@ app.post('/add', (req, res) => {
     }
     res.status(201).send(obj)
 })
-
-
