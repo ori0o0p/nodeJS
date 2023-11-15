@@ -22,8 +22,8 @@ const User = new mongoose.model('User', userSchema)
 
 app.post('/user', async (req, res) => {
     const testUser = new User({
-        name: 'test',
-        age: 111
+        name: req.body.name,
+        age: req.body.age
     })
 
     await testUser.save()
