@@ -1,4 +1,5 @@
 import express from "express";
+
 const app = express()
 
 app.listen(3000, () => {
@@ -16,4 +17,9 @@ app.post('/add', (req, res) => {
         content : req.body.content
     }
     res.status(201).send(obj)
+})
+
+app.get('/', (req, res) => {
+    console.log('접속하였습니다.')
+    res.redirect('/hello')
 })
