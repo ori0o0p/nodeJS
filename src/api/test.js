@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+import express from "express";
 
 const app = express()
 
@@ -30,8 +30,13 @@ app.post('/user', async (req, res) => {
     res.json(testUser)
 }) 
 
+app.get('/home', (req, res) => {
+    User.find()
+        .then((users) => res.json(users))
+})
+
 app.get('/', (req, res) => {
     console.log('접속하였습니다.')
-    res.redirect('/hello')
+    res.redirect('/home')
 })
 
