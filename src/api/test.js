@@ -9,36 +9,26 @@ app.use(express.json())
 
 import mongoose from 'mongoose'
 
-mongoose.connect('mongodb://localhost:27017/nodejs', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/nodejs')
         .then(() => console.log('db 연결!'))
         .catch((error) => console.error(error))
-        
+
 const userSchema = new mongoose.Schema({
     name: String,
     age: Number
-})
+}, {collection: 'user'})
 
-const user = new mongoose.model('user', userSchema)
+const User = new mongoose.model('User', userSchema)
 
-app.post('/', async (req, res) => {
-    const user = new user({
+app.post('/user', async (req, res) => {
+    const testUser = new User({
         name: 'test',
         age: 111
     })
+
+    await testUser.save()
+    res.json(testUser)
 }) 
-
-app.get('/hello', (req, res) => {
-    res.json({'message': 'lol',
-              'point': '/hello'})
-})
-
-app.post('/add', (req, res) => {
-    const obj = {
-        title : req.body.title,
-        content : req.body.content
-    }
-    res.status(201).send(obj)
-})
 
 app.get('/', (req, res) => {
     console.log('접속하였습니다.')
