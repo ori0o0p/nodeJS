@@ -32,7 +32,8 @@ app.post('/user', async (req, res) => {
 
 app.get('/home', (req, res) => {
     User.find()
-        .then((users) => res.json(users))
+        .then(users => res.json(users))
+        .catch(e => res.send(e))
 })
 
 app.get('/', (req, res) => {
