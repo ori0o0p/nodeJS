@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 
 const app = express()
 
@@ -8,7 +8,8 @@ app.listen(3000, () => {
 app.use(express.json())
 
 app.get('/hello', (req, res) => {
-    res.send('hello node!')
+    res.json({'message': 'lol',
+              'point': '/hello'})
 })
 
 app.post('/add', (req, res) => {
@@ -23,3 +24,4 @@ app.get('/', (req, res) => {
     console.log('접속하였습니다.')
     res.redirect('/hello')
 })
+
