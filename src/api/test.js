@@ -11,7 +11,7 @@ import mongoose from 'mongoose'
 
 mongoose.connect('mongodb://localhost:27017/nodejs')
         .then(() => console.log('db 연결!'))
-        .catch((error) => console.error(error))
+        .catch(error => console.error(error))
 
 const userSchema = new mongoose.Schema({
     name: String,
@@ -41,3 +41,8 @@ app.get('/', (req, res) => {
     res.redirect('/home')
 })
 
+app.delete('/remove', async (req, res) => {
+    await User.deleteOne({name: 'test'})
+              .then(() => console.log('삭제 완료!'))
+              .catch(e => console.log(e))
+})
