@@ -46,3 +46,9 @@ app.delete('/remove', async (req, res) => {
               .then(() => console.log('삭제 완료!'))
               .catch(e => console.log(e))
 })
+
+app.delete('/remove-one', async(req, res) => {
+    const userName = req.body.name
+    await User.deleteOne({name: userName})
+              .then(userName + "삭제 완료")
+})
